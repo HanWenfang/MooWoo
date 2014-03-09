@@ -71,11 +71,11 @@ private:
 	map<string, string> pool;
 };
 
-
+// the one and the backup
 class RankZeroHandler:public RankHandler
 {
 public:
-	RankZeroHandler(int rk, vector<UniqueServer> &ranks ,int flag):RankHandler(rk, ranks, flag)
+	RankZeroHandler(int rk, vector<UniqueServerQueue> &ranks ,int flag):RankHandler(rk, ranks, flag)
 	{
 
 	}
@@ -85,7 +85,6 @@ public:
 
 		running_flag = false;
 		//zookeeper
-
 
 
 

@@ -57,13 +57,13 @@ int AsynCore::acceptSocket()
 	return return_value;
 }
 
-void AsynCore::setRanks(int rk, vector<UniqueServer> &rank_set)
+void AsynCore::setRanks(int rk, vector<UniqueServerQueue> &rank_set)
 {
 	rank = rk;
 	ranks = rank_set;
 }
 
-int AsynCore::initialize(int rk, vector<UniqueServer> &rank_set)
+int AsynCore::initialize(int rk, vector<UniqueServerQueue> &rank_set)
 {
 	setRanks(rk, rank_set);
 
@@ -78,7 +78,7 @@ int AsynCore::initialize(int rk, vector<UniqueServer> &rank_set)
 
 	struct sockaddr_in ServerAddr;
 	memset(&ServerAddr, 0, sizeof(ServerAddr));
-	socketAddress(ServerAddr, htons(ranks[rank].port), htonl(INADDR_ANY));
+	socketAddress(ServerAddr, htons(ranks[rank].next().port), htonl(INADDR_ANY));
 
 	if(socketRankBind(&ServerAddr) < 0){
 		cout << "socket bind error" << endl;

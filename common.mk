@@ -12,3 +12,5 @@ obj-MooWoo += AsynCore.o
 obj-MooWoo += Message.o
 obj-MooWoo += Reactor.o
 obj-MooWoo += Protocol.o
+obj-MooWoo += UniqueServerQueue.o
+

@@ -3,9 +3,22 @@ Commandline: Program -rank Num
 
 General order: Master worker1 worker2....
 
+Architecture:
 
 
-
+								master0
+								master0_
+								master0_
+								...
+								/   |   \
+							   /    |    \
+							  /     |     \
+							 /      |      \
+							/       |       \
+						worker1   worker2   worker3
+						worker1_  worker2_  worker3_
+						worker1_  worker2_  worker3_
+						...
 
 
 

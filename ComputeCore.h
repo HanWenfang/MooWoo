@@ -8,6 +8,7 @@
 #include "Reactor.h"
 #include "MessageTagHandler.h"
 #include "RankHandler.h"
+#include "UniqueServerQueue.h"
 #include <map>
 
 using namespace std;
@@ -15,9 +16,7 @@ using namespace std;
 class ComputeCore
 {
 private:
-	//vector<Message> inbox;
-	//vector<Message> outbox;
-	vector<UniqueServer> ranks;
+	vector<UniqueServerQueue> ranks;
 	int rank;
 	int master;
 	int slave;
@@ -26,7 +25,7 @@ private:
 	map<int, RankHandler*> RankHandlerTable;
 
 public:
-	ComputeCore(vector<UniqueServer> &rank_set, int rk, int master_mode, int slave_mode)\
+	ComputeCore(vector<UniqueServerQueue> &rank_set, int rk, int master_mode, int slave_mode)\
 	:ranks(rank_set), rank(rk), master(master_mode), slave(slave_mode){ }
 	void run();
 	

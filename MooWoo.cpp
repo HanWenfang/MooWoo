@@ -7,11 +7,18 @@
 
 int main(int argc, char const *argv[])
 {
-	UniqueServer rank0("127.0.0.1", 16501);
-	UniqueServer rank1("127.0.0.1", 17501);
-	UniqueServer rank2("127.0.0.1", 18501);
+	UniqueServerQueue rank0;
+	rank0.push_back(UniqueServer("127.0.0.1", 16501));
+	rank0.push_back(UniqueServer("127.0.0.1", 16601));
+	rank0.push_back(UniqueServer("127.0.0.1", 16701));
 
-	vector<UniqueServer> ranks;
+	UniqueServerQueue rank1;
+	rank1.push_back(UniqueServer("127.0.0.1", 17501));
+
+	UniqueServerQueue rank2;
+	rank2.push_back(UniqueServer("127.0.0.1", 18501));
+
+	vector<UniqueServerQueue> ranks;
 	ranks.push_back(rank0);
 	ranks.push_back(rank1);
 	ranks.push_back(rank2);
