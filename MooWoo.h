@@ -1,3 +1,7 @@
+#ifndef MOOWOO_H
+#define MOOWOO_H
+
+
 #include <Poco/SingletonHolder.h>
 #include <Poco/StringTokenizer.h>
 #include <map>
@@ -5,6 +9,8 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include "RankHandler.h"
+#include "UniqueServer.h"
 
 using namespace std;
 
@@ -65,3 +71,28 @@ private:
 	map<string, string> pool;
 };
 
+
+class RankZeroHandler:public RankHandler
+{
+public:
+	RankZeroHandler(int rk, vector<UniqueServer> &ranks ,int flag):RankHandler(rk, ranks, flag)
+	{
+
+	}
+
+	int callback()
+	{
+
+		running_flag = false;
+		//zookeeper
+
+
+
+
+		return 0;
+	}
+};
+
+
+
+#endif

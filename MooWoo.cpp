@@ -1,7 +1,7 @@
 #include "MooWoo.h"
 #include "UniqueServer.h"
 #include "ArgumentsParser.h"
-
+#include "ComputeCore.h"
 
 
 
@@ -21,6 +21,14 @@ int main(int argc, char const *argv[])
 	int slave_mode = -1;
 
 	ArgumentsParser::parse(argc, argv, &rank, &master_mode, &slave_mode);
+
+	ComputeCore computerCore(ranks, rank, master_mode, slave_mode);
+
+	RankZeroHandler rankZeroHandler(0, ranks, true);
+	computerCore.registerRankHandler(rankZeroHandler);
+
+	cout << "start running..." << endl;
+	computerCore.run();
 
 
 	return 0;
