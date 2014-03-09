@@ -8,10 +8,13 @@ A distributed programming framework : Master-Worker Pattern
 			  /   |    \
 			 /          \
 			/     |      \
-	  worker1  worker2  worker3
+	  Worker1  Worker2  Worker3
 
 
-
+Rank Style:
+	Master 	- Rank 0
+	Worker1 - Rank 1
+	...
 
 
 
@@ -27,6 +30,6 @@ A distributed programming framework : Master-Worker Pattern
 Dependency Tools & Libraries:
 	Poco C++  
 	Zookeeper
-	
+
 
 

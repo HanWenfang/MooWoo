@@ -8,6 +8,11 @@
 
 using namespace std;
 
+/**********************************************
+ How to use: 
+	Config::instance().get("socket::rTimeout")
+
+***********************************************/
 class Config
 {
 public:
@@ -28,7 +33,7 @@ public:
 	{
 		return pool[name];
 	}
-	
+
 	static Config &instance()
 	{
 		static Poco::SingletonHolder<Config> sh;
