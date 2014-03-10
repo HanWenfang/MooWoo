@@ -14,7 +14,7 @@ private:
 	
 	int message_tag;
 	int blockID;
-	int socket;
+	int socket; // not unique
 
 	string context; // stream protocol
 

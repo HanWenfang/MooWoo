@@ -13,4 +13,4 @@ obj-MooWoo += Message.o
 obj-MooWoo += Reactor.o
 obj-MooWoo += Protocol.o
 obj-MooWoo += UniqueServerQueue.o
-
+obj-MooWoo += SocketManager.o

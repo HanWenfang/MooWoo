@@ -28,7 +28,8 @@ Error Handling Pattern: [ Requester will deal with them. ]
 Concurrent Pattern:
 	Single Thread now!!
 
-
+Comunication Pattern:
+	Get
 
 
 
