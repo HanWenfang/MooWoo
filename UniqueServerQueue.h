@@ -12,7 +12,7 @@ public:
 	UniqueServerQueue():counter(0) { }
 	void push_back(UniqueServer us);
 	UniqueServer next();
-
+	UniqueServer get(int index);
 
 private:
 	vector<UniqueServer> usQueue;

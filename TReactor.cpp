@@ -96,7 +96,6 @@ int TReactor::start()
 			{
 				if(FD_ISSET(*it, file_descriptors_ptr))
 				{
-					
 					receiveResult = Protocol::receiveMessage(*it, inbox);
 
 					if ( receiveResult == 0)

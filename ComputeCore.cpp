@@ -12,7 +12,7 @@ void ComputeCore::run()
 		}
 	}
 
-	if(asyncore.initialize(rank, ranks) < 0)
+	if(asyncore.initialize(rank, Link, ranks) < 0)
 	{
 		cout << "initialize asyncore error." << endl;
 		return;

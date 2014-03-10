@@ -1,5 +1,8 @@
 
-Commandline: Program -rank Num 
+Commandline: Program -rank Num -L 0
+
+"-L" means the back up Number!
+
 
 General order: Master worker1 worker2....
 

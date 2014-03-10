@@ -21,6 +21,7 @@ class ComputeCore
 private:
 	vector<UniqueServerQueue> ranks;
 	int rank;
+	int Link;
 	int master;
 	int slave;
 	Poco::NotificationQueue event_queue;
@@ -32,8 +33,8 @@ private:
 	void startThreads();
 
 public:
-	ComputeCore(vector<UniqueServerQueue> &rank_set, int rk, int master_mode, int slave_mode)\
-	:ranks(rank_set), rank(rk), master(master_mode), slave(slave_mode), asyncore(event_queue){ }
+	ComputeCore(vector<UniqueServerQueue> &rank_set, int rk, int L, int master_mode, int slave_mode)\
+	:ranks(rank_set), rank(rk), Link(L), master(master_mode), slave(slave_mode), asyncore(event_queue){ }
 	~ComputeCore()
 	{
 		for(vector<TReactor *>::iterator it=tReactors.begin(); it != tReactors.end(); ++it)

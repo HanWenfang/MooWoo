@@ -24,12 +24,13 @@ int main(int argc, char const *argv[])
 	ranks.push_back(rank2);
 
 	int rank = -1;
+	int Link = -1;
 	int master_mode = -1;
 	int slave_mode = -1;
 
-	ArgumentsParser::parse(argc, argv, &rank, &master_mode, &slave_mode);
+	ArgumentsParser::parse(argc, argv, &rank, &Link, &master_mode, &slave_mode);
 
-	ComputeCore computerCore(ranks, rank, master_mode, slave_mode);
+	ComputeCore computerCore(ranks, rank, Link, master_mode, slave_mode);
 
 	RankZeroHandler rankZeroHandler(0, ranks, true);
 	computerCore.registerRankHandler(rankZeroHandler);

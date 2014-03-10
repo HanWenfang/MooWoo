@@ -19,5 +19,8 @@ UniqueServer UniqueServerQueue::next()
 	return tmp;
 }
 
-
+UniqueServer UniqueServerQueue::get(int index)
+{
+	return usQueue[index];
+}
 

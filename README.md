@@ -26,8 +26,8 @@ Distributed Management Pattern:
 		...
 
 False Tolerance Pattern:
-*	Many Workers
-*	Zookeeper For Master
+*	Many Workers [zookeeper]
+*	Many Masters [zookeeper]
 
 Error Handling Pattern: [ Requester will deal with them. ]
 *	Timeout
