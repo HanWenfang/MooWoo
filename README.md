@@ -29,7 +29,7 @@ Concurrent Pattern:
 	Single Thread now!!
 
 Comunication Pattern:
-	Get
+	Get [long-time connection etc.]
 
 
 

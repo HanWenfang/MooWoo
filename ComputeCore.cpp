@@ -1,6 +1,5 @@
 
 #include "ComputeCore.h"
-#include "Reactor.h"
 
 void ComputeCore::run()
 {
@@ -19,13 +18,13 @@ void ComputeCore::run()
 		return;
 	}
 
-	Reactor reactor(this);
+	startThreads();
 
 	for(;;)
 	{
 		if(asyncore.select() > 0)
 		{
-			reactor.start(asyncore.acceptSocket()); // reactor--must be asynchronous
+			asyncore.acceptSocket();
 		}
 
 		cout << "rank: " << rank <<endl;
@@ -51,4 +50,19 @@ RankHandler* ComputeCore::getRankHandler(int rank)
 {
 	return RankHandlerTable[rank];
 }
+
+void ComputeCore::startThreads()
+{
+	int i = 0;
+	while( i < Poco::NumberParser::parse(Config::instance().get("ThreadNum")))
+	{
+		tReactors.push_back(new TReactor(this, event_queue, i));
+	}
+
+	for(vector<TReactor *>::iterator it=tReactors.begin(); it != tReactors.end(); ++it)
+	{
+		Poco::ThreadPool::defaultPool().start(*(*it));
+	}
+}
+
 

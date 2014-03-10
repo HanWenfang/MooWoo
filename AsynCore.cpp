@@ -38,7 +38,7 @@ int AsynCore::setListen(int num)
 	return listen(current_socket, num);
 }
 
-int AsynCore::acceptSocket()
+void AsynCore::acceptSocket()
 {
 	int return_value;
 	struct sockaddr_in temp;
@@ -54,7 +54,7 @@ int AsynCore::acceptSocket()
 		else break;
 	}
 
-	return return_value;
+	event_queue.enqueueNotification(new SocketEvent(return_value));
 }
 
 void AsynCore::setRanks(int rk, vector<UniqueServerQueue> &rank_set)

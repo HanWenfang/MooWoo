@@ -10,7 +10,8 @@ obj-MooWoo += ArgumentsParser.o
 obj-MooWoo += ComputeCore.o
 obj-MooWoo += AsynCore.o
 obj-MooWoo += Message.o
-obj-MooWoo += Reactor.o
 obj-MooWoo += Protocol.o
 obj-MooWoo += UniqueServerQueue.o
 obj-MooWoo += SocketManager.o
+obj-MooWoo += TReactor.o
+

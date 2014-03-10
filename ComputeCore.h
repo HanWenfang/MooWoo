@@ -5,11 +5,14 @@
 #include <vector>
 #include "Message.h"
 #include "AsynCore.h"
-#include "Reactor.h"
 #include "MessageTagHandler.h"
 #include "RankHandler.h"
 #include "UniqueServerQueue.h"
+#include "MooWoo.h"
 #include <map>
+#include <Poco/NotificationQueue.h>
+#include <Poco/ThreadPool.h>
+#include "TReactor.h"
 
 using namespace std;
 
@@ -20,13 +23,25 @@ private:
 	int rank;
 	int master;
 	int slave;
+	Poco::NotificationQueue event_queue;
 	AsynCore asyncore;
 	map<int, MessageTagHandler*> MessageTagHandlerTable;
 	map<int, RankHandler*> RankHandlerTable;
 
+	vector<TReactor*> tReactors;
+	void startThreads();
+
 public:
 	ComputeCore(vector<UniqueServerQueue> &rank_set, int rk, int master_mode, int slave_mode)\
-	:ranks(rank_set), rank(rk), master(master_mode), slave(slave_mode){ }
+	:ranks(rank_set), rank(rk), master(master_mode), slave(slave_mode), asyncore(event_queue){ }
+	~ComputeCore()
+	{
+		for(vector<TReactor *>::iterator it=tReactors.begin(); it != tReactors.end(); ++it)
+		{
+			delete *it;
+		}
+	}
+
 	void run();
 	
 	void registerMessageHandler(MessageTagHandler &messageTagHandler);
