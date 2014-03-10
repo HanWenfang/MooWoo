@@ -3,39 +3,49 @@ MooWoo
 
 A distributed programming framework : Master-Worker Pattern
 
+								master0
+								master0_
+								master0_
+								...
+								/   |   \
+							   /    |    \
+							  /     |     \
+							 /      |      \
+							/       |       \
+						worker1   worker2   worker3
+						worker1_  worker2_  worker3_
+						worker1_  worker2_  worker3_
+						...
 
-				Master    - Zookeeper
-			  /   |    \
-			 /          \
-			/     |      \
-	  Worker1  Worker2  Worker3
 
 Distributed Management Pattern:
-	Rank Style:
+*	Rank Style:
+
 		Master 	- Rank 0
 		Worker1 - Rank 1
 		...
 
 False Tolerance Pattern:
-	Many Workers
-	Zookeeper For Master
+*	Many Workers
+*	Zookeeper For Master
 
 Error Handling Pattern: [ Requester will deal with them. ]
-	Timeout
-	Buffer
-	Idempotent: Retry
+*	Timeout
+*	Buffer
+*	Idempotent: Retry
 
 Concurrent Pattern:
-	Single Thread now!!
+*	Multi-Thread
+*   IO Multiplex
 
 Comunication Pattern:
-	Get [long-time connection etc.]
+*	Get [long-time connection etc.]
 
 
 
 Dependency Tools & Libraries:
-	Poco C++  
-	Zookeeper
-
+*	Poco C++  
+*	Zookeeper
+*	MumanPlatform
 
 
