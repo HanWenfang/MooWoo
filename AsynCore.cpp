@@ -4,6 +4,8 @@
 #include <sys/select.h>
 #include <string.h>
 #include <errno.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
 
 #define IP_PORT_SIZE sizeof(struct sockaddr_in)
 
@@ -54,6 +56,15 @@ void AsynCore::acceptSocket()
 		else break;
 	}
 
+	//int nSndBuf = 1024*32;
+	//int nRcvBuf = 1024*32;
+	int noTCPDelay = 1;
+
+	//set socket options
+	setsockopt(return_value, IPPROTO_TCP, TCP_NODELAY, (const void *)&noTCPDelay, sizeof(noTCPDelay));
+	//setsockopt(return_value, SOL_SOCKET, SO_SNDBUF, (const void *)&nSndBuf, sizeof(nSndBuf));
+	//setsockopt(return_value, SOL_SOCKET, SO_SNDBUF, (const void *)&nRcvBuf, sizeof(nRcvBuf));
+
 	event_queue.enqueueNotification(new SocketEvent(return_value));
 }
 
@@ -77,6 +88,15 @@ int AsynCore::initialize(int rk, int L, vector<UniqueServerQueue> &rank_set)
 		return -1;
 	}
 
+	int nSndBuf = 1024*32;
+	int nRcvBuf = 1024*32;
+	int noTCPDelay = 1;
+
+	//set socket options
+	setsockopt(current_socket, IPPROTO_TCP, TCP_NODELAY, (const void *)&noTCPDelay, sizeof(noTCPDelay));
+	setsockopt(current_socket, SOL_SOCKET, SO_SNDBUF, (const void *)&nSndBuf, sizeof(nSndBuf));
+	setsockopt(current_socket, SOL_SOCKET, SO_SNDBUF, (const void *)&nRcvBuf, sizeof(nRcvBuf));
+	
 	struct sockaddr_in ServerAddr;
 	memset(&ServerAddr, 0, sizeof(ServerAddr));
 	socketAddress(ServerAddr, htons(ranks[rank].get(Link).port), htonl(INADDR_ANY));

@@ -2,8 +2,8 @@
 #include "UniqueServer.h"
 #include "ArgumentsParser.h"
 #include "ComputeCore.h"
-
-
+#include "TaskManager.h"
+#include "Master.h"
 
 int main(int argc, char const *argv[])
 {
@@ -30,8 +30,12 @@ int main(int argc, char const *argv[])
 
 	ArgumentsParser::parse(argc, argv, &rank, &Link, &master_mode, &slave_mode);
 
-	ComputeCore computerCore(ranks, rank, Link, master_mode, slave_mode);
+	TaskManager taskM;
+	Master master(taskM);
 
+	ComputeCore computerCore(ranks, rank, Link, master_mode, slave_mode, master);
+
+	// For master zookeeper lock
 	RankZeroHandler rankZeroHandler(0, ranks, true);
 	computerCore.registerRankHandler(rankZeroHandler);
 

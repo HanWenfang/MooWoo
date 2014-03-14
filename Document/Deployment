@@ -1,7 +1,7 @@
 
 Commandline: Program -rank Num -L 0
 
-"-L" means the back up Number!
+"-L" means the back up Number! 0 1 2.....
 
 
 General order: Master worker1 worker2....

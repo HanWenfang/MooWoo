@@ -56,4 +56,13 @@ int Message::getSocket()
 	return socket;
 }
 
+void Message::setblockID(int bID)
+{
+	blockID = bID;
+}
+
+int Message::getblockID()
+{
+	return bID;
+}
 

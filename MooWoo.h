@@ -71,7 +71,7 @@ private:
 	map<string, string> pool;
 };
 
-// the one and the backup
+// the one and the backup [ zookeeper ]
 class RankZeroHandler:public RankHandler
 {
 public:

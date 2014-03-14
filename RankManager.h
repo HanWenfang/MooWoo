@@ -7,8 +7,8 @@
 
 using namespace std;
 
-// Long-time connection management
-class SocketManager
+// Long-time connection management for master
+class RankManager
 {
 public:
 	void addSocket();

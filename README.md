@@ -30,7 +30,7 @@ False Tolerance Pattern:
 *	Many Masters [zookeeper]
 
 Error Handling Pattern: [ Requester will deal with them. ]
-*	Timeout
+*	Timeout [ The Art of Timeout ]
 *	Buffer
 *	Idempotent: Retry
 

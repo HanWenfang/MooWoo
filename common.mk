@@ -12,6 +12,9 @@ obj-MooWoo += AsynCore.o
 obj-MooWoo += Message.o
 obj-MooWoo += Protocol.o
 obj-MooWoo += UniqueServerQueue.o
-obj-MooWoo += SocketManager.o
+obj-MooWoo += RankManager.o
 obj-MooWoo += TReactor.o
-
+obj-MooWoo += Master.o
+obj-MooWoo += TaskManager.o
+obj-MooWoo += Connect.o
+obj-MooWoo += MessageStatusRecord.o

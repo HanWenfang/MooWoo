@@ -1,0 +1,25 @@
+
+This program also is an example.
+
+
+The time requirement is also the reference for you timeout set in your program.
+
+		Master will create a "Woo" every minute.
+		Workers will GET "Woo" by "Moo" message every 80 second. If get "Woo", then catch the "Moo" and "Woo".
+		Master will GET the result status.[then tell the Master its work is done.]
+
+
+Communication Protocol:
+
+		one-by-one!
+
+messages:
+	action: WOO_MESSAGE_GET
+	context: WOO_MESSAGE
+	status: WOO_MESSAGE_OK
+
+
+
+
+
+

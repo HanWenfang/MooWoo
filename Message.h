@@ -40,6 +40,9 @@ public:
 
 	void setSocket(int sock);
 	int getSocket();
+
+	void setblockID(int bID);
+	int getblockID();
 };
 
 
